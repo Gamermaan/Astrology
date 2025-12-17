@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroAI - Your Cosmic Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Background Animation -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="app-container">
+        
+        <!-- LANDING PAGE -->
+        <section id="landing-page" class="active-section">
+            <div class="glass-panel center-content">
+                <h1><i class="fa-solid fa-star-of-david"></i> AstroAI</h1>
+                <p class="subtitle">Unlock the secrets of the cosmos with Artificial Intelligence.</p>
+                <div class="features-list">
+                    <div class="feature-item"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Horoscope</div>
+                    <div class="feature-item"><i class="fa-solid fa-comments"></i> 24/7 Cosmic Chat</div>
+                    <div class="feature-item"><i class="fa-solid fa-user-astronaut"></i> Personalized Insights</div>
+                </div>
+                <button id="enter-btn" class="primary-btn pulse">Enter the Void <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- LOGIN / SIGNUP PAGE -->
+        <section id="login-page" class="hidden-section">
+            <div class="glass-panel narrow-panel">
+                <h2>Identify Yourself</h2>
+                <p class="description">Access your astral records.</p>
+                <form id="auth-form">
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Begin Journey</button>
+                    <p class="switch-mode">New soul? <a href="#" id="switch-to-signup">Create profile</a></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- MFA PAGE -->
+        <section id="mfa-page" class="hidden-section">
+             <div class="glass-panel narrow-panel">
+                <h2>Verify Identity</h2>
+                <p class="description">Enter the cosmic code sent to your device.</p>
+                <form id="mfa-form">
+                    <div class="otp-container">
+                        <input type="text" maxlength="1" class="otp-input" required>
+                        <input type="text" maxlength="1" class="otp-input" required>
+                        <input type="text" maxlength="1" class="otp-input" required>
+                        <input type="text" maxlength="1" class="otp-input" required>
+                        <input type="text" maxlength="1" class="otp-input" required>
+                        <input type="text" maxlength="1" class="otp-input" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Verify</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ASTRO OFRM PAGE -->
+        <section id="astro-form-page" class="hidden-section">
+            <div class="glass-panel">
+                <h2>Celestial Alignment</h2>
+                <p class="description">Tell us your origin story for precise calculations.</p>
+                <form id="astrology-details-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="full-name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Birth Time</label>
+                            <input type="time" id="birth-time" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Place of Birth</label>
+                            <input type="text" id="birth-place" placeholder="City, Country" required>
+                        </div>
+                        <div class="input-group full-width">
+                            <label>Specific Questions / Focus</label>
+                            <textarea id="astro-focus" placeholder="e.g. Career, Love, Spiritual Path..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="primary-btn">Align Stars</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- CHATROOM PAGE -->
+        <section id="chat-page" class="hidden-section">
+            <div class="chat-container glass-panel">
+                <div class="chat-header">
+                    <h3><i class="fa-solid fa-robot"></i> AstroGuide AI</h3>
+                    <button id="logout-btn" class="icon-btn"><i class="fa-solid fa-power-off"></i></button>
+                </div>
+                <div class="chat-messages" id="chat-history">
+                    <!-- Messages will appear here -->
+                    <div class="message ai-message">
+                        <div class="avatar"><i class="fa-solid fa-star"></i></div>
+                        <div class="bubble">Greetings. I have analyzed your celestial chart. Use me to guide your path. What do you seek?</div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="Ask the stars..." autocomplete="off">
+                    <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Notification / Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
