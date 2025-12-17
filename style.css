@@ -289,14 +289,14 @@ body {
     border-radius: 50%;
     border: 1px solid rgba(168, 85, 247, 0.1);
     background: repeating-conic-gradient(from 0deg,
-            transparent 0deg 29.5deg,
-            rgba(168, 85, 247, 0.1) 29.5deg 30deg);
-    z-index: -2;
+            transparent 0deg 28deg,
+            rgba(168, 85, 247, 0.3) 28deg 30deg);
+    z-index: -1;
     /* Behind UI, similar to stars */
-    opacity: 0.08;
-    /* User requested 0.05-0.12 */
+    opacity: 0.25;
+    /* Increased for visibility */
     pointer-events: none;
-    box-shadow: 0 0 100px rgba(168, 85, 247, 0.05);
+    box-shadow: 0 0 100px rgba(168, 85, 247, 0.1);
     animation: rotateChakra 120s linear infinite;
 }
 
