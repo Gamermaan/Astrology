@@ -109,75 +109,14 @@
                         <input type="text" maxlength="1" class="otp-input" required>
                         <input type="text" maxlength="1" class="otp-input" required>
                         <input type="text" maxlength="1" class="otp-input" required>
-                        <input type="text" maxlength="1" class="otp-input" required>
-                        <input type="text" maxlength="1" class="otp-input" required>
                     </div>
                     <button type="submit" class="primary-btn">Verify</button>
                 </form>
             </div>
         </section>
 
-        <!-- ASTRO OFRM PAGE -->
-        <section id="astro-form-page" class="hidden-section">
-            <div class="glass-panel">
-                <h2>Celestial Alignment</h2>
-                <p class="description">Tell us your origin story for precise calculations.</p>
-                <form id="astrology-details-form">
-                    <div class="form-grid">
-                        <div class="input-group">
-                            <label>Full Name</label>
-                            <input type="text" id="full-name" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Date of Birth</label>
-                            <input type="date" id="dob" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Birth Time</label>
-                            <input type="time" id="birth-time" required>
-                        </div>
-                        <div class="input-group">
-                            <label>Place of Birth</label>
-                            <input type="text" id="birth-place" placeholder="City, Country" required>
-                        </div>
-                        <div class="input-group full-width">
-                            <label>Specific Questions / Focus</label>
-                            <textarea id="astro-focus" placeholder="e.g. Career, Love, Spiritual Path..."></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="primary-btn">Align Stars</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- CHATROOM PAGE -->
-        <section id="chat-page" class="hidden-section">
-            <div class="chat-container glass-panel">
-                <div class="chat-header">
-                    <h3><i class="fa-solid fa-robot"></i> AstroGuide AI</h3>
-                    <button id="logout-btn" class="icon-btn"><i class="fa-solid fa-power-off"></i></button>
-                </div>
-                <div class="chat-messages" id="chat-history">
-                    <!-- Messages will appear here -->
-                    <div class="message ai-message">
-                        <div class="avatar"><i class="fa-solid fa-star"></i></div>
-                        <div class="bubble">Greetings. I have analyzed your celestial chart. Use me to guide your path.
-                            What do you seek?</div>
-                    </div>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="user-input" placeholder="Ask the stars..." autocomplete="off">
-                    <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </section>
-
     </div>
-
-    <!-- Notification / Toast Container -->
-    <div id="toast-container"></div>
-
-    <script src="script.js"></script>
+    <script src="auth.js"></script>
 </body>
 
 </html>

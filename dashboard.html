@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JotishVidya - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Background Animation (Consistent Theme) -->
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <!-- Solar System Animation -->
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="orbit-mercury">
+            <div class="planet mercury"></div>
+        </div>
+        <div class="orbit-venus">
+            <div class="planet venus"></div>
+        </div>
+        <div class="orbit-earth">
+            <div class="planet earth">
+                <div class="moon"></div>
+            </div>
+        </div>
+        <div class="orbit-mars">
+            <div class="planet mars"></div>
+        </div>
+        <div class="orbit-jupiter">
+            <div class="planet jupiter"></div>
+        </div>
+        <div class="orbit-saturn">
+            <div class="planet saturn">
+                <div class="ring"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kundali Chakra Background -->
+    <div class="kundali-chakra"></div>
+
+    <div class="app-container">
+
+        <!-- ASTRO FORM PAGE (Default View) -->
+        <section id="astro-form-page" class="active-section">
+            <div class="glass-panel">
+                <h2>Celestial Alignment</h2>
+                <p class="description">Tell us your origin story for precise calculations.</p>
+                <form id="astrology-details-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="full-name" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Birth Time</label>
+                            <input type="time" id="birth-time" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Place of Birth</label>
+                            <input type="text" id="birth-place" placeholder="City, Country" required>
+                        </div>
+                        <div class="input-group full-width">
+                            <label>Specific Questions / Focus</label>
+                            <textarea id="astro-focus" placeholder="e.g. Career, Love, Spiritual Path..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="primary-btn">Align Stars</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- CHATROOM PAGE -->
+        <section id="chat-page" class="hidden-section">
+            <div class="chat-container glass-panel">
+                <div class="chat-header">
+                    <h3><i class="fa-solid fa-robot"></i> AstroGuide AI</h3>
+                    <button id="logout-btn" class="icon-btn"><i class="fa-solid fa-power-off"></i></button>
+                </div>
+                <div class="chat-messages" id="chat-history">
+                    <!-- Messages will appear here -->
+                    <div class="message ai-message">
+                        <div class="avatar"><i class="fa-solid fa-star"></i></div>
+                        <div class="bubble">I am awaiting your cosmic data...</div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" placeholder="Ask the stars...">
+                    <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
