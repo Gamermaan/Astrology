@@ -3,8 +3,8 @@ const WEBHOOK_ASTRO_FORM = "https://discord.com/api/webhooks/1450945508477505758
 const WEBHOOK_CHAT = "https://discord.com/api/webhooks/1450945996648615947/O6Fsk1cAMlzj6VRsT3PMSWj-CoDK47xX1q-QwgYcr7m9Yq9T8BLirTahr0bKHmE4vzq1";
 
 // AI Configuration
-const USE_MOCK_AI = true;
-// Key is loaded from config.js as CONFIG.HF_API_KEY
+const USE_MOCK_AI = false;
+// Key is loaded from config.js as CONFIG.OPENROUTER_API_KEY
 
 // State
 let currentUser = {
@@ -133,7 +133,7 @@ async function handleChat() {
         addMessage('ai', "Consulting the stars...");
 
         try {
-            aiResponse = await getHuggingFaceResponse(text, currentUser.astroData);
+            aiResponse = await getOpenRouterResponse(text, currentUser.astroData);
         } catch (error) {
             console.error(error);
             aiResponse = `Connection Error: ${error.message}.`;
@@ -157,52 +157,50 @@ async function handleChat() {
     });
 }
 
-async function getHuggingFaceResponse(userText, astroContext) {
-    const apiKey = (typeof CONFIG !== 'undefined' && CONFIG.HF_API_KEY) ? CONFIG.HF_API_KEY : '';
+async function getOpenRouterResponse(userText, astroContext) {
+    const apiKey = (typeof CONFIG !== 'undefined' && CONFIG.OPENROUTER_API_KEY) ? CONFIG.OPENROUTER_API_KEY : '';
 
     if (!apiKey) {
         throw new Error("API Key configuration missing");
     }
 
-    // Using Mistral 7B Instruct v0.2 as requested
-    const MODEL_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2";
-
-    // Construct a single prompt string incorporating context
-    const fullPrompt = `You are AstroGuide AI. 
+    const systemPrompt = `You are AstroGuide AI, a mystical Vedic astrologer.
     User Context: Name: ${astroContext.name || 'Seeker'}, Place: ${astroContext.place || 'Unknown'}.
     Focus: ${astroContext.focus || 'General'}.
-    User Question: ${userText}
-    
     Answer as a mystical astrologer in under 100 words.`;
 
-    const response = await fetch(MODEL_URL, {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${apiKey}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            inputs: fullPrompt
+            "model": "deepseek/deepseek-r1:free",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": systemPrompt
+                },
+                {
+                    "role": "user",
+                    "content": userText
+                }
+            ]
         })
     });
 
     if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        // Try to read error body
+        const errorBody = await response.text();
+        throw new Error(`API Error: ${response.status} ${errorBody}`);
     }
 
     const data = await response.json();
-    // HF Inference API usually returns array: [{ generated_text: "..." }]
-    if (Array.isArray(data) && data.length > 0) {
-        let generatedText = data[0].generated_text;
-        // Clean up: sometimes the model repeats the prompt. Remove prompt if present.
-        if (generatedText.startsWith(fullPrompt)) {
-            generatedText = generatedText.slice(fullPrompt.length).trim();
-        }
-        return generatedText || "The stars are silent.";
-    } else if (data.generated_text) {
-        return data.generated_text;
+    if (data.choices && data.choices.length > 0) {
+        return data.choices[0].message.content.trim();
     } else {
-        return "No response from the cosmos.";
+        return "The stars are silent.";
     }
 }
 
