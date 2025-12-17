@@ -77,25 +77,13 @@ if (switchBtn) {
 }
 
 // 3. MFA Logic
-const otpInputs = document.querySelectorAll('.otp-input');
-otpInputs.forEach((input, index) => {
-    input.addEventListener('input', (e) => {
-        if (e.target.value.length === 1 && index < otpInputs.length - 1) {
-            otpInputs[index + 1].focus();
-        }
-    });
-
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
-            otpInputs[index - 1].focus();
-        }
-    });
-});
-
 const mfaForm = document.getElementById('mfa-form');
 if (mfaForm) {
     mfaForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        // Simple validation found in HTML (required, numeric) is sufficient per user request
+
         // Simulate verification and redirect to Dashboard
         setTimeout(() => {
             window.location.href = 'dashboard.html';
