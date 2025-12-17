@@ -1,4 +1,4 @@
-# AI Astrology Chatroom - Deployment Guide
+# JotishVidya - Deployment Guide
 
 This project is a **100% Static Website**. This means it requires no backend server, no database, and no build steps (like `npm run build`).
 
